@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Agencia de Viajes - Explora el mundo con nosotros</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #198754;
+            --accent-color: #ffc107;
+            --text-color: #333;
+            --light-color: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .hero-section {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://source.unsplash.com/random/1600x900/?travel,beach');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .package-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            margin-bottom: 30px;
+            height: 100%;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .package-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .package-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .package-card:hover .package-image img {
+            transform: scale(1.1);
+        }
+        
+        .package-details {
+            padding: 20px;
+        }
+        
+        .package-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .package-price {
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .package-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 15px;
+        }
+        
+        .package-features li {
+            padding: 5px 0;
+            font-size: 0.9rem;
+        }
+        
+        .package-features i {
+            color: var(--accent-color);
+            margin-right: 5px;
+        }
+        
+        .btn-custom {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-custom:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .testimonial-section {
+            background-color: var(--light-color);
+            padding: 80px 0;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .testimonial-text::before {
+            content: "\201C";
+            font-size: 60px;
+            position: absolute;
+            left: -20px;
+            top: -30px;
+            color: rgba(0,0,0,0.1);
+        }
+        
+        .client-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .client-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .client-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .client-details h5 {
+            margin-bottom: 0;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        .client-details p {
+            margin-bottom: 0;
+            font-size: 0.8rem;
+            color: #777;
+        }
+        
+        .rating i {
+            color: var(--accent-color);
+            font-size: 0.8rem;
+        }
+        
+        .newsletter-section {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 60px 0;
+        }
+        
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .newsletter-form .form-control {
+            border-radius: 50px 0 0 50px;
+            height: 50px;
+            border: none;
+        }
+        
+        .newsletter-form .btn {
+            border-radius: 0 50px 50px 0;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            font-weight: 600;
+            border: none;
+            height: 50px;
+        }
+        
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-title {
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .social-icons {
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+        
+        .social-icons li {
+            margin-right: 15px;
+        }
+        
+        .social-icons a {
+            display: block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background-color: #333;
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        /* Floating Action Button */
+        .floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 999;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-section {
+                height: 60vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <i class="fas fa-globe-americas me-2"></i>TravelExperts
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#home">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#packages">Paquetes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#destinations">Destinos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contacto</a>
+                        </li>
+                    </ul>
+                    <div class="ms-lg-3">
+                        <a href="#" class="btn btn-outline-primary me-2">Iniciar Sesión</a>
+                        <a href="#" class="btn btn-primary">Registrarse</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Explora el Mundo con Nosotros</h1>
+                <p class="lead mb-4">Descubre destinos increíbles y vive experiencias inolvidables</p>
+                <a href="#packages" class="btn btn-lg btn-primary me-3">Ver Paquetes</a>
+                <a href="#contact" class="btn btn-lg btn-outline-light">Contáctanos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <form class="row g-3">
+                                <div class="col-md-3">
+                                    <label for="destination" class="form-label">Destino</label>
+                                    <select class="form-select" id="destination">
+                                        <option selected>Cualquier destino</option>
+                                        <option>Cancún, México</option>
+                                        <option>París, Francia</option>
+                                        <option>Tokyo, Japón</option>
+                                        <option>Machu Picchu, Perú</option>
+                                        <option>Safari en Kenia</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="date" class="form-label">Fecha</label>
+                                    <input type="date" class="form-control" id="date">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="duration" class="form-label">Duración</label>
+                                    <select class="form-select" id="duration">
+                                        <option selected>Cualquier duración</option>
+                                        <option>1-3 días</option>
+                                        <option>4-7 días</option>
+                                        <option>8-14 días</option>
+                                        <option>15+ días</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="travelers" class="form-label">Viajeros</label>
+                                    <select class="form-select" id="travelers">
+                                        <option selected>1 persona</option>
+                                        <option>2 personas</option>
+                                        <option>3 personas</option>
+                                        <option>4 personas</option>
+                                        <option>5+ personas</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2 d-flex align-items-end">
+                                    <button type="submit" class="btn btn-primary w-100 py-3">Buscar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Packages Section -->
+    <section class="py-5" id="packages">
+        <div class="container">
+            <h2 class="section-title">Paquetes Destacados</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="package-card">
+                        <div class="package-image">
+                            <img src="https://source.unsplash.com/random/600x400/?cancun,beach" alt="Cancún">
+                        </div>
+                        <div class="package-details">
+                            <h3 class="package-title">Cancún, México</h3>
+                            <div class="package-price">Desde $1,200</div>
+                            <ul class="package-features">
+                                <li><i class="fas fa-calendar-alt"></i> 7 días / 6 noches</li>
+                                <li><i class="fas fa-hotel"></i> Hotel 5 estrellas</li>
+                                <li><i class="fas fa-utensils"></i> Todo incluido</li>
+                                <li><i class="fas fa-swimming-pool"></i> Acceso a playa privada</li>
+                            </ul>
+                            <a href="#" class="btn btn-custom w-100">Ver detalles</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="package-card">
+                        <div class="package-image">
+                            <img src="https://source.unsplash.com/random/600x400/?paris,eiffel" alt="París">
+                        </div>
+                        <div class="package-details">
+                            <h3 class="package-title">París, Francia</h3>
+                            <div class="package-price">Desde $1,800</div>
+                            <ul class="package-features">
+                                <li><i class="fas fa-calendar-alt"></i> 10 días / 9 noches</li>
+                                <li><i class="fas fa-hotel"></i> Hotel 4 estrellas</li>
+                                <li><i class="fas fa-utensils"></i> Desayuno incluido</li>
+                                <li><i class="fas fa-ticket-alt"></i> Tour Eiffel incluido</li>
+                            </ul>
+                            <a href="#" class="btn btn-custom w-100">Ver detalles</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="package-card">
+                        <div class="package-image">
+                            <img src="https://source.unsplash.com/random/600x400/?tokyo,japan" alt="Tokyo">
+                        </div>
+                        <div class="package-details">
+                            <h3 class="package-title">Tokyo, Japón</h3>
+                            <div class="package-price">Desde $2,200</div>
+                            <ul class="package-features">
+                                <li><i class="fas fa-calendar-alt"></i> 12 días / 11 noches</li>
+                                <li><i class="fas fa-hotel"></i> Hotel 4 estrellas</li>
+                                <li><i class="fas fa-utensils"></i> Desayuno incluido</li>
+                                <li><i class="fas fa-subway"></i> Japan Rail Pass 7 días</li>
+                            </ul>
+                            <a href="#" class="btn btn-custom w-100">Ver detalles</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-primary btn-lg">Ver todos los paquetes</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section class="py-5 bg-light" id="destinations">
+        <div class="container">
+            <h2 class="section-title">Destinos Populares</h2>
+            <div class="row g-4">
+                <div class="col-md-3 col-6">
+                    <div class="card shadow h-100">
+                        <img src="https://source.unsplash.com/random/300x300/?rome" class="card-img-top" alt="Roma">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Roma</h5>
+                            <p class="text-muted">Italia</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Explorar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="card shadow h-100">
+                        <img src="https://source.unsplash.com/random/300x300/?bali" class="card-img-top" alt="Bali">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Bali</h5>
+                            <p class="text-muted">Indonesia</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Explorar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="card shadow h-100">
+                        <img src="https://source.unsplash.com/random/300x300/?new-york" class="card-img-top" alt="Nueva York">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Nueva York</h5>
+                            <p class="text-muted">Estados Unidos</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Explorar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="card shadow h-100">
+                        <img src="https://source.unsplash.com/random/300x300/?santorini" class="card-img-top" alt="Santorini">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Santorini</h5>
+                            <p class="text-muted">Grecia</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Explorar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offers -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title">Ofertas Especiales</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img src="https://source.unsplash.com/random/600x400/?maldives,resort" class="img-fluid rounded shadow" alt="Maldivas">
+                </div>
+                <div class="col-lg-6">
+                    <div class="p-4">
+                        <div class="badge bg-danger mb-2">Oferta Limitada</div>
+                        <h3 class="mb-3">Maldivas - Paraíso Tropical</h3>
+                        <p class="text-muted mb-3">Disfruta de 7 noches en un resort de lujo con vista al océano y acceso directo a una de las playas más hermosas del mundo.</p>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="text-decoration-line-through text-muted me-2">$3,500</div>
+                            <div class="fs-4 fw-bold text-danger">$2,800</div>
+                            <div class="ms-auto">
+                                <span class="badge bg-success">20% DESCUENTO</span>
+                            </div>
+                        </div>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Vuelos incluidos</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Desayuno y cena</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Tour en barco de fondo de cristal</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Sesión de snorkel guiada</li>
+                        </ul>
+                        <div class="d-flex align-items-center">
+                            <div class="me-3">
+                                <small class="text-muted">Oferta válida hasta:</small>
+                                <div class="fw-bold">15 de Diciembre, 2023</div>
+                            </div>
+                            <a href="#" class="btn btn-primary ms-auto">Reservar Ahora</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonial-section" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            Increíble experiencia en Cancún. El resort era espectacular y las excursiones muy bien organizadas. Sin duda volveré a viajar con esta agencia.
+                        </div>
+                        <div class="client-info">
+                            <div class="client-image">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Juan Pérez">
+                            </div>
+                            <div class="client-details">
+                                <h5>Juan Pérez</h5>
+                                <p>Viaje a Cancún</p>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            El viaje a París fue maravilloso. Los guías eran muy conocedores y los hoteles tenían ubicaciones perfectas. Recomendaría esta agencia a todos.
+                        </div>
+                        <div class="client-info">
+                            <div class="client-image">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="María García">
+                            </div>
+                            <div class="client-details">
+                                <h5>María García</h5>
+                                <p>Viaje a París</p>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            Tokyo es una ciudad fascinante y el itinerario que me prepararon fue perfecto. Pude ver todo lo que quería y más. Excelente atención al cliente.
+                        </div>
+                        <div class="client-info">
+                            <div class="client-image">
+                                <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Carlos López">
+                            </div>
+                            <div class="client-details">
+                                <h5>Carlos López</h5>
+                                <p>Viaje a Tokyo</p>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-outline-primary">Ver más testimonios</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h3 class="mb-3">Suscríbete a nuestro boletín</h3>
+                <p class="mb-4">Recibe ofertas especiales y actualizaciones sobre nuestros paquetes directamente en tu correo electrónico.</p>
+                <form class="newsletter-form">
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Tu correo electrónico" required>
+                        <button type="submit" class="btn">Suscribirme</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h3 class="footer-title">Sobre Nosotros</h3>
+                    <p>Somos una agencia de viajes comprometida a ofrecer experiencias inolvidables a precios competitivos. Nuestro objetivo es hacer realidad tus sueños de viaje.</p>
+                    <ul class="social-icons">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h3 class="footer-title">Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Inicio</a></li>
+                        <li><a href="#packages">Paquetes</a></li>
+                        <li><a href="#destinations">Destinos</a></li>
+                        <li><a href="#testimonials">Testimonios</a></li>
+                        <li><a href="#contact">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h3 class="footer-title">Destinos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Cancún, México</a></li>
+                        <li><a href="#">París, Francia</a></li>
+                        <li><a href="#">Tokyo, Japón</a></li>
+                        <li><a href="#">Machu Picchu, Perú</a></li>
+                        <li><a href="#">Safari en Kenia</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <h3 class="footer-title">Contacto</h3>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-map-marker-alt"></i> Av. Central #123, Ciudad</p>
+                        <p><i class="fas fa-phone"></i> +1 234-567-8900</p>
+                        <p><i class="fas fa-envelope"></i> info@travelexperts.com</p>
+                        <p><i class="fas fa-clock"></i> Lunes a Viernes: 9am a 6pm</p>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 TravelExperts. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <div class="floating-btn" id="chat-btn">
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        // Script para la barra de navegación
+        document.addEventListener('DOMContentLoaded', function() {
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('bg-white');
+                    navbar.classList.add('shadow');
+                } else {
+                    navbar.classList.remove('bg-white');
+                    navbar.classList.remove('shadow');
+                }
+            });
+            
+            // Chat button function
+            document.getElementById('chat-btn').addEventListener('click', function() {
+                alert('¡Chat en vivo disponible pronto! Por favor, contáctanos por teléfono o email.');
+            });
+        });
+    </script>
+</body>
+</html>
